@@ -44,107 +44,117 @@ const objectiveData = {
 
 const colorRanges = {
     'Lograr una utilidad neta del 8% de las ventas totales para el año siguiente': [
-      { min: -Infinity, max: 2, color: 'red' },
+      { min: -Infinity, max: 2, color: '#ff1d1d' },
       { min: 2, max: 8, color: 'yellow' },
       { min: 8, max: Infinity, color: '#64ef4f' },
     ],
     'Crecimiento del 10% de las ventas': [
-      { min: -Infinity, max: 5, color: 'red' },
+      { min: -Infinity, max: 5, color: '#ff1d1d' },
       { min: 5, max: 10, color: 'yellow' },
       { min: 10, max: Infinity, color: '#64ef4f' },
     ],
     'Mejorar la satisfacción de los clientes': [
       { min: -Infinity, max: 2, color: '#64ef4f' },
       { min: 2, max: 5, color: 'yellow' },
-      { min: 5, max: Infinity, color: 'red' },
+      { min: 5, max: Infinity, color: '#ff1d1d' },
     ],
     'Maximizar la rentabilidad por cliente': [
       { min: -Infinity, max: 25, color: '#64ef4f' },
       { min: 25, max: 40, color: 'yellow' },
-      { min: 40, max: Infinity, color: 'reg' },
+      { min: 40, max: Infinity, color: '#ff1d1d' },
     ],
     'Ampliar la cartera de clientes': [
-      { min: -Infinity, max: 10, color: 'red' },
+      { min: -Infinity, max: 10, color: '#ff1d1d' },
       { min: 10, max: 20, color: 'yellow' },
       { min: 20, max: Infinity, color: '#64ef4f' },
     ],
     'Mejorar la calidad del producto': [
-      { min: -Infinity, max: 1, color: 'red' },
+      { min: -Infinity, max: 1, color: '#ff1d1d' },
       { min: 2, max: 3, color: 'yellow' },
       { min: 3, max: Infinity, color: '#64ef4f' },
     ],
     'Mejorar la gestión de almacenamiento': [
       { min: -Infinity, max: 3, color: '#64ef4f' },
       { min: 3, max: 5, color: 'yellow' },
-      { min: 5, max: Infinity, color: 'red' },
+      { min: 5, max: Infinity, color: '#ff1d1d' },
     ],
     'Elevar la eficiencia operativa': [
       { min: -Infinity, max: 120, color: '#64ef4f' },
       { min: 120, max: 130, color: 'yellow' },
-      { min: 130, max: Infinity, color: 'red' },
+      { min: 130, max: Infinity, color: '#ff1d1d' },
     ],
     'Elevar la productividad de los colaboradores': [
       { min: -Infinity, max: 300, color: 'red' },
       { min: 301, max: 999, color: 'yellow' },
-      { min: 999, max: Infinity, color: '#64ef4f' },
+      { min: 999, max: Infinity, color: '##ff1d1d' },
     ],
   };
 
 const calculate = (objective, values) => {
     let result = 0;
+    let indicador = '';
     switch (objective) {
       case 'Lograr una utilidad neta del 8% de las ventas totales para el año siguiente':
         const utilidadNetaAnualX = parseFloat(values.utilidadNetaAnualX) || 0;
         const ventaAnualX = parseFloat(values.ventaAnualX) || 0;
         result = (utilidadNetaAnualX/ ventaAnualX)*100;
+        indicador= 'Utilidad neta anual';
         break;
   
       case 'Crecimiento del 10% de las ventas':
         const ventaAnual1 = parseFloat(values.ventaAnual1) || 0;
         const ventaAnual2 = parseFloat(values.ventaAnual2) || 0;
         result = ((ventaAnual2 - ventaAnual1)/ventaAnual1)*100;
+        indicador= 'Venta anual';
         break;
 
       case 'Mejorar la satisfacción de los clientes':
         const totalDevolucionesCliente = parseFloat(values.totalDevolucionesCliente) || 0;
         const totalPedidosCliente = parseFloat(values.totalPedidosCliente) || 0;
         result = (totalDevolucionesCliente/totalPedidosCliente)*100;
+        indicador= 'Porcentaje de devoluciones de productos';
         break;
       
       case 'Maximizar la rentabilidad por cliente':
         const totalGastoVenta = parseFloat(values.totalGastoVenta) || 0;
         const montoVentaCliente = parseFloat(values.montoVentaCliente) || 0;
         result = (totalGastoVenta/montoVentaCliente)*100;
+        indicador= 'Rentabilidad por cliente';
         break;
       
       case 'Ampliar la cartera de clientes':
         const nuevosClientes = parseFloat(values.nuevosClientes) || 0;
         const totalClientes = parseFloat(values.totalClientes) || 0;
         result = (nuevosClientes/totalClientes)*100;
+        indicador= 'Nuevos clientes';
         break;
       
       case 'Mejorar la calidad del producto':
         const nAlianzasProveedores = parseFloat(values.nAlianzasProveedores) || 0;
         const totalProveedores = parseFloat(values.totalProveedores) || 0;
         result = nAlianzasProveedores/totalProveedores;
+        indicador= 'Alianzas con aliados claves';
         break;
       
       case 'Mejorar la gestión de almacenamiento':
         const inventarioDanado = parseFloat(values.inventarioDanado) || 0;
         const totalInventario = parseFloat(values.totalInventario) || 0;
         result = (inventarioDanado/totalInventario)*100;
+        indicador= 'Pérdida de productos terminados';
         break;
       
       case 'Elevar la eficiencia operativa':
         const nHorasProduccion = parseFloat(values.nHorasProduccion) || 0;
         const nHorasPlanificadas = parseFloat(values.nHorasPlanificadas) || 0;
         result = (nHorasProduccion/nHorasPlanificadas)*100;
+        indicador= 'Planificación horas hombre';
         break;
       
-      case 'Elevar la productividad de los colaboradoresa':
+      case 'Elevar la productividad de los colaboradores':
         const utilidadNetaAnual = parseFloat(values.utilidadNetaAnual) || 0;
         const nTrabajadores = parseFloat(values.nTrabajadores) || 0;
         result = (utilidadNetaAnual/nTrabajadores)*100;
+        indicador= 'Productividad de los colaboradores';
         break;
       default:
         result = 0;
@@ -162,20 +172,20 @@ const calculate = (objective, values) => {
       }
     }
     else{
-      result=-1;
+      result=null;
     }
-    return { result, backgroundColor };
+    return { result, backgroundColor, indicador};
 };
 
 const Objective = ({setTitle, setObjective}) => {
   const location = useLocation();
   const { perspectiveName, objective } = location.state || { perspectiveName: 'No Perspective', objective: 'No Objective' };
   const [result, setResult] = useState(null);
+  const [indicador, setIndicador] = useState('');
 
   //
 
   useEffect(()=>{
-    console.log(result != null);
   },[result])
 
   const [backgroundColor, setBackgroundColor] = useState('white');
@@ -196,14 +206,16 @@ const Objective = ({setTitle, setObjective}) => {
       ...prevValues,
       [name]: value,
     }));
+    setResult(null);
   };
 
   const handleCalculate = () => {
-    const { result, backgroundColor } = calculate(objective, values);
+    const { result, backgroundColor, indicador } = calculate(objective, values);
     console.log('result', result);
     if(result != null && result != undefined){
       setResult(result);
       setBackgroundColor(backgroundColor);
+      setIndicador(indicador)
       console.log(result);
       console.log(backgroundColor);
     } else {
@@ -236,10 +248,10 @@ const Objective = ({setTitle, setObjective}) => {
       <Button variant="contained" color="primary" onClick={handleCalculate}>
         Calcular
       </Button>
-      {result >0 && (
-        <Box mt={3} p={2} border={1} borderRadius={4} bgcolor={backgroundColor} id='result'>
-          <Typography variant="h6" color='inherit'>
-            Resultado: {result.toFixed(2)}
+      {result != null && (
+        <Box mt={4} p={3} border={0} borderRadius={4} bgcolor={backgroundColor} id='result'>
+          <Typography variant="h6" color='black'>
+            {indicador}: {result.toFixed(2)}
           </Typography>
         </Box>
       )}
