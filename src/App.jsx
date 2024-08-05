@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import {AppBar, Toolbar, IconButton, Typography, Button} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Start from './components/Start.jsx';
