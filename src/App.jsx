@@ -45,7 +45,7 @@ function App() {
       <section>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Start setTitle={setTitle} setObjective={setObjective}/>}></Route>
+            <Route path="/BalancedScorecard/" element={<Start setTitle={setTitle} setObjective={setObjective}/>}></Route>
             <Route path="/perspective" element={<Perspective setTitle={setTitle} setObjective={setObjective}/>}></Route>
             <Route path="/perspective/objective" element={<Objective setTitle={setTitle} setObjective={setObjective} />} />
           </Routes>
