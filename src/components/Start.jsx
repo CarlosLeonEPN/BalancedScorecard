@@ -17,7 +17,7 @@ const Start = ({ setTitle }) => {
 
   const handleBoxClick = (perspectiveName) => {
     setTitle(perspectiveName);
-    navigate('/perspective', { state: { perspectiveName } });
+    navigate('/BalancedScorecard/perspective', { state: { perspectiveName } });
   };
 
   return (

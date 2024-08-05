@@ -30,7 +30,7 @@ const Perspective = ({setTitle, setObjective}) => {
   const handleObjectiveClick = (objective) => {
     setTitle(`${perspectiveName}`);
     setObjective(objective);
-    navigate('/perspective/objective', { state: { perspectiveName, objective } });
+    navigate('/BalancedScorecard/perspective/objective', { state: { perspectiveName, objective } });
   };
 
   // Obtén los datos correspondientes a la perspectiva seleccionada

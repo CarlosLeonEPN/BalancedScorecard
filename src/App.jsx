@@ -25,7 +25,7 @@ function appBarLabel(title, objective) {
         </div>
       </div>
       <Button color="inherit">
-        <a href="/" className='toolBarText'>Inicio</a>
+        <a href="/BalancedScorecard/" className='toolBarText'>Inicio</a>
       </Button>
     </Toolbar>
   );
@@ -46,8 +46,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/BalancedScorecard/" element={<Start setTitle={setTitle} setObjective={setObjective}/>}></Route>
-            <Route path="/perspective" element={<Perspective setTitle={setTitle} setObjective={setObjective}/>}></Route>
-            <Route path="/perspective/objective" element={<Objective setTitle={setTitle} setObjective={setObjective} />} />
+            <Route path="/BalancedScorecard/perspective" element={<Perspective setTitle={setTitle} setObjective={setObjective}/>}></Route>
+            <Route path="/BalancedScorecard/perspective/objective" element={<Objective setTitle={setTitle} setObjective={setObjective} />} />
           </Routes>
         </BrowserRouter>
       </section>
